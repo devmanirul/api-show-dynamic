@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import navbarData from "../../../constant/navbar.constant";
+import { useContext } from "react";
+import { ProductContext } from "../../../context/ProductContext";
 
 const Navbar = () => {
+  const { cartProducts } = useContext(ProductContext);
+  console.log(cartProducts.length);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -50,7 +54,20 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {navbarData.map(({ id, Link, title }) => (
-            <NavLink className={"btn btn-md btn-success ml-5"} key={id} to={Link} >{title}</NavLink>
+            <NavLink
+              className={"relative btn btn-md btn-success ml-5"}
+              key={id}
+              to={Link}
+            >
+              {title}
+              {title === "Cart" ? (
+                <span className="absolute -top-2 -right-2 bg-red-600 px-2 py-1  rounded-full">
+                  {cartProducts.length}
+                </span>
+              ) : (
+                ""
+              )}
+            </NavLink>
           ))}
         </ul>
       </div>

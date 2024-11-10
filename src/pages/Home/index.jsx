@@ -1,4 +1,14 @@
+import Slider from "../../Components/Home/Slider";
+
 const Home = () => {
-  return <div>My name Home page</div>;
+  const data = {
+    description: "Hello",
+    title: "Hi",
+  };
+  return (
+    <div>
+      <Slider {...data} />
+    </div>
+  );
 };
 export default Home;

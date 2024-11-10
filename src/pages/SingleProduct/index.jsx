@@ -1,8 +1,15 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { ProductContext } from "../../context/ProductContext";
 
 const SingleProduct = () => {
   const data = useLoaderData();
-  console.log(data);
+
+  const { addProduct } = useContext(ProductContext);
+  const handleProduct = () => {
+    addProduct(data);
+  };
+
   return (
     <div className="p-10 border-2">
       {/* card */}
@@ -20,7 +27,12 @@ const SingleProduct = () => {
             </p>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-success text-white">Buy</button>
+            <button
+              onClick={handleProduct}
+              className="btn btn-success text-white"
+            >
+              Buy
+            </button>
           </div>
         </div>
       </div>
