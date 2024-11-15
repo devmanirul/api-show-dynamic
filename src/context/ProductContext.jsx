@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
 
-// create context
+// create context 
 export const ProductContext = createContext(null);
 
 const ProductContextProvider = ({ children }) => {
